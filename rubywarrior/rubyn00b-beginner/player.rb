@@ -6,6 +6,8 @@ class Player
 
   def play_turn(warrior)
 
+    return warrior.rescue! if warrior.feel.captive?
+
     return warrior.walk! if warrior.health < @health && warrior.feel.empty?
 
     return warrior.rest! if warrior.feel.empty? && warrior.health < 20
